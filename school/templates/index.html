@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Subject List</h1>
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+    <form action="{% url 'school:create' %}" method="post">
+        {% csrf_token %}
+        <!-- Subject Name -->
+        <div class="form-group">
+            <label for="subject" class="col-sm-3 control-label">Subject</label>
+            <div class="col-sm-6">
+                {{ form.name }}
+            </div>
+        </div>
+
+        <!-- Add Subject Button -->
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-6">
+                <button type="submit" class="btn btn-default">
+                    <i class="fa fa-plus"></i> Add Subject
+                </button>
+            </div>
+        </div>
+
+    </form>
+    
+
+    <!-- Current Subjects -->
+    <h2>Current Subjects</h2>
+    <table class="table table-striped todo-table">
+        <thead>
+            <th>Subjects</th><th>&nbsp;</th>
+        </thead>
+
+        <tbody>
+            {% for subject in subjects %}
+                <tr>
+                    <!-- Subject Name -->
+                    <td>
+                        <div>{{ subject.name }}</div>
+                    </td>
+                    <td>
+                        <button>View</button>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %}

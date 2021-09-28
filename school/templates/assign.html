@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Assignment List</h1>
+    <table class="table table-striped todo-table">
+        <thead>
+            <!-- <th>{{ name }}</th><th>&nbsp;</th> -->
+        </thead>
+
+        <tbody>
+            {% for subject in assigns %}
+                <tr>
+                    <!-- Subject Name -->
+                    <td>
+                        <div>{{subject.subject}} : {{ subject.assign }}</div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %}
